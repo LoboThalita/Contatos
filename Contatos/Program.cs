@@ -12,7 +12,6 @@ builder.Services.AddDbContext<ContatosContext>(options =>
 
 
 builder.Services.AddScoped<IClienteService, DBContextCliente>();
-builder.Services.AddScoped<IContatosService, DBContextContato>();
 
 var app = builder.Build();
 

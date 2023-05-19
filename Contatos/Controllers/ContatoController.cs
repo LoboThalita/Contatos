@@ -6,9 +6,9 @@ namespace Contatos.Controllers
 {
     public class ContatoController : Controller
     {
-        private readonly IContatosService _service;
+        private readonly IClienteService _service;
 
-        public ContatoController(IContatosService service)
+        public ContatoController(IClienteService service)
         {
             _service = service;
         }
@@ -28,11 +28,25 @@ namespace Contatos.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public IActionResult Adicionar(int id, Contato contato)
+        public IActionResult Adicionar([FromRoute] int id,[FromForm]Contato contato)
         {
-            Cliente? cliente = _service.Find(id);
-            cliente.Contatos.Add(contato);
-            return View(id);
+            _service.Create(id, contato);
+            return View(_service.Find(id));
+        }
+
+        [HttpGet]
+        public IActionResult Remover(int idContato, int idCliente)
+        {
+            return View(_service.Find(idCliente, idContato));
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult RemoverConfirmacao ([FromRoute]int Contato, [FromRoute]int Cliente)
+        {
+            _service.Delete(Contato);
+            var cliente = _service.Find(Cliente);
+            return View("Index", cliente);
         }
     }
 }

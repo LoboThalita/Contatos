@@ -17,3 +17,11 @@ CREATE TABLE Contato (
     CONSTRAINT FK_Contato_Cliente FOREIGN KEY (IdCliente)
         REFERENCES Cliente (Id)
 );
+
+USE Contatos
+
+SELECT*
+FROM Cliente
+
+SELECT *
+FROM Contato

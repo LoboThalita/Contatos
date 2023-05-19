@@ -1,0 +1,25 @@
+﻿@model Contatos.Models.Contato
+@{
+    ViewData["Title"] = "Remover Contato";
+}
+
+<h1>Contato</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model=> model.Perfil)</th>
+            <th>@Html.DisplayNameFor(model=> model.Tipo)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>@Model.Perfil</th>
+            <th>@Model.Tipo</th>
+        </tr>
+    </tbody>
+</table>
+
+
+<a asp-action="RemoverConfirmacao" asp-route-Contato="@Model.Id" asp-route-Cliente="@Model.IdCliente" class="btn btn-primary btn-danger">Confirmar Remoção</a>
+
