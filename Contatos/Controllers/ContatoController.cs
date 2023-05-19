@@ -39,7 +39,8 @@ namespace Contatos.Controllers
         {
             return View(_service.Find(idCliente, idContato));
         }
-
+    //PAREI AQUIIIII!!!
+        //Não entra no método
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         public IActionResult RemoverConfirmacao ([FromRoute]int Contato, [FromRoute]int Cliente)
