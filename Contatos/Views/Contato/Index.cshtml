@@ -1,0 +1,34 @@
+﻿@model Contatos.Models.Cliente
+@{
+    ViewData["Title"] = "Contatos";
+}
+
+<h1>Contatos</h1>
+
+<h3>
+    @Model.Nome<br/>
+</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Contatos.First().Perfil)</th>
+            <th>@Html.DisplayNameFor(model => model.Contatos.First().Tipo)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Contatos)
+        {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Perfil)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
+                    <td>
+                        <a asp-action="Editar">Editar</a> |
+                        <a asp-action="Remover">Remover</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>
+
+<a type="button" class="btn btn-primary" asp-action="Adicionar" asp-route-id="@Model.Id" >Criar nova forma de contato</a>

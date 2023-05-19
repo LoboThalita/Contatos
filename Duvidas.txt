@@ -1,0 +1,46 @@
+FLUXO DO PROGRAMA AO CLICAR EM CLIENTE (exibir o Detalhar)
+
+ele: Exibe a View "index" do Cliente
+eu: Clico em Detalhar 
+	ele: executa a action "Detalhar(int id)" do controller Cliente (?) 7
+		ele: Executa o método .Find(id) da classe DbContextCliente.cs com o id como parametro (?)4
+			ele: (?) 5 
+	ele: Retorna a View "Detalhar" com o resurtado do método .find() como parametro (?) 
+
+
+DUVIDAS
+
+1. Pra cada Injeção de dependencia que eu for fazer no projeto eu preciso fazer o builder no program.cs?
+
+2. Não entendi pra que serve \ como funciona a pasta "Services", por que os métodos estão nela e não no controller?
+
+3.Pra que serve e como funciona o:
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+4. Em que momento esse "id" é passado? é o framework que entende que é o id do cliente automaticamente?
+                                     ____ Aqui!
+                                    /
+(ClienteController)                V
+public IActionResult Detalhar(int id)
+        {
+            return View(_service.Find(id));
+        }
+
+5. O que o método include faz? 
+(DbContextCliente)                                ___ Aqui
+public Cliente? Find(int id)                     /
+        {                                       V
+            return _contatosContext.Clientes.Include("Contatos").First(x => x.Id == id);
+        }
+
+6.Em que momento na View Detalhar ele "le" o parâmetro dado no ClienteController?
+
+
+
+
+
+
+
+

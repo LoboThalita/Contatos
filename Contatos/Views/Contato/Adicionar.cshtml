@@ -1,0 +1,35 @@
+﻿@model Contatos.Models.Cliente
+@{
+    ViewData["Title"] = "Adicionar Contato";
+}
+
+<h1>Adicionar</h1>
+<h3>Contato</h3>
+<hr />
+<form class="row g-3">
+
+      <div class="form-group">
+           <label for="inputState" class="form-label">Perfil</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+      <div class="col-md-4">
+        <label for="inputState" class="form-label">Tipo</label>
+        <select id="inputState" class="form-select">
+          <option selected>Instagram</option>
+          <option>Facebook</option>
+          <option>Twiter</option>
+          <option>Email</option>
+          <option>Celular</option>
+          <option>Telefone Fixo</option>
+        </select>
+      </div>
+    </div>
+</form>
+
+<a type="button" class="btn btn-primary" asp-action="Adicionar" asp-route-id="@Model.Id" >Adicionar Contato</a>
+<a type="button" class="btn btn-primary" asp-action="Index" asp-route-id="@Model.Id" asp-route-contato="@Model.Contatos" >Voltar</a>
