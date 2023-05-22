@@ -33,6 +33,7 @@ else
                 <input asp-for="Endereco" class="form-control" />
                 <span asp-validation-for="Endereco" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 @if (editar)
                 {
@@ -47,8 +48,10 @@ else
     </div>
 </div>
 
+<br />
+
 <div>
-    <a asp-action="Index">Voltar</a>
+    <a type="button" class="btn btn-primary" class="button" asp-action="Index">Voltar</a>
 </div>
 
 @section Scripts {

@@ -39,15 +39,18 @@ namespace Contatos.Controllers
         {
             return View(_service.Find(idCliente, idContato));
         }
-    //PAREI AQUIIIII!!!
-        //Não entra no método
-        [HttpPost]
+
         [AutoValidateAntiforgeryToken]
-        public IActionResult RemoverConfirmacao ([FromRoute]int Contato, [FromRoute]int Cliente)
+        public IActionResult RemoverConfirmacao (int Contato, int Cliente)
         {
             _service.Delete(Contato);
             var cliente = _service.Find(Cliente);
             return View("Index", cliente);
+        }
+
+        public IActionResult Editar(int id)
+        {
+            return View(_service.Find(id));
         }
     }
 }
