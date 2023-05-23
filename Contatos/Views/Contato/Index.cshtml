@@ -24,7 +24,7 @@
                 <td>@Html.DisplayFor(modelItem => item.Perfil)</td>
                 <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
                 <td>
-                    <a asp-action="Editar" asp-route-id="@Model.Id">Editar</a> |
+                        <a asp-action="Editar" asp-route-idCliente="@Model.Id" asp-route-idContato="@item.Id">Editar</a> |
                         <a href="@Url.Action("Remover","Contato",new{idContato=item.Id,idCliente=Model.Id})">Remover</a>
                 </td>
             </tr>

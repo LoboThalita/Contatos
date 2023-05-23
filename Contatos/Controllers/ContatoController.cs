@@ -48,9 +48,16 @@ namespace Contatos.Controllers
             return View("Index", cliente);
         }
 
-        public IActionResult Editar(int id)
+        public IActionResult Editar(int idCliente, int idContato)
         {
-            return View(_service.Find(id));
+            return View(_service.Find(idCliente, idContato));
+        }
+
+        [HttpPost]
+        public IActionResult Editar([FromForm]Contato contato, int idContato, int idCliente)
+        {
+            _service.Update(idCliente, idContato, contato);
+            return View("index", _service.Find(idCliente));
         }
     }
 }
